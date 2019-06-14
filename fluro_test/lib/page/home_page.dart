@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var json = jsonEncode(Utf8Encoder().convert('来自第一个界面'));
+    var json = jsonEncode(Utf8Encoder().convert('来自第一个界面测试一下'));
     int age = 14;
     bool sex = true;
 

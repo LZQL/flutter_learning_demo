@@ -6,8 +6,10 @@
  * Copyright (c) 2018 Yakka, LLC. All rights reserved.
  * See LICENSE for distribution and usage details.
  */
+import 'package:fluro_test/page/return_params_page.dart';
+import 'package:fluro_test/page/transition_demo_page.dart';
 import 'package:flutter/painting.dart';
-import 'package:fluro/fluro.dart';
+import 'package:fluro_test/utils/fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro_test/page/splash_page.dart';
 import 'package:fluro_test/page/home_page.dart';
@@ -19,102 +21,38 @@ var splashHandler = new Handler(
   return new SplashPag();
 });
 
+/// 跳转到主页
 var homeHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return HomePage();
 });
 
+/// 参数传递 int ，double，bool，自定义类型
 var demoParamHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
   String name = params["name"]?.first;
   String age = params["age"]?.first;
   String sex = params["sex"]?.first;
+  String score = params["score"]?.first;
   String personjson = params['personjson']?.first;
   return DemoParamsPage(
     name: name,
-    age: transformInt(age),
-    sex: transformBool(sex),
+    age: FluroConvertUtils.string2int(age),
+    score: FluroConvertUtils.string2double(score),
+    sex: FluroConvertUtils.string2bool(sex),
     personJson: personjson,
   );
 });
 
-/// String  转为  bool
-bool transformBool(String str) {
-  if (str == 'true') {
-    return true;
-  } else {
-    return false;
-  }
-}
+/// 关闭页面，返回参数
+var returnParamHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  return ReturnParamsPage();
+});
 
-/// String  转为  int
-int transformInt(String str) {
-  return int.parse(str);
-}
-
-//var rootHandler = new Handler(
-//    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-//  return new HomeComponent();
-//});
-//
-//var demoRouteHandler = new Handler(
-//    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-//  String message = params["message"]?.first;
-//  String colorHex = params["color_hex"]?.first;
-//  String result = params["result"]?.first;
-//  Color color = new Color(0xFFFFFFFF);
-//  if (colorHex != null && colorHex.length > 0) {
-//    color = new Color(ColorHelpers.fromHexString(colorHex));
-//  }
-//  return new DemoSimpleComponent(
-//      message: message, color: color, result: result);
-//});
-//
-//var demoFunctionHandler = new Handler(
-//    type: HandlerType.function,
-//    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-//      String message = params["message"]?.first;
-//      showDialog(
-//        context: context,
-//        builder: (context) {
-//          return new AlertDialog(
-//            title: new Text(
-//              "Hey Hey!",
-//              style: new TextStyle(
-//                color: const Color(0xFF00D6F7),
-//                fontFamily: "Lazer84",
-//                fontSize: 22.0,
-//              ),
-//            ),
-//            content: new Text("$message"),
-//            actions: <Widget>[
-//              new Padding(
-//                padding: new EdgeInsets.only(bottom: 8.0, right: 8.0),
-//                child: new FlatButton(
-//                  onPressed: () {
-//                    Navigator.of(context).pop(true);
-//                  },
-//                  child: new Text("OK"),
-//                ),
-//              ),
-//            ],
-//          );
-//        },
-//      );
-//    });
-//
-///// Handles deep links into the app
-///// To test on Android:
-/////
-///// `adb shell am start -W -a android.intent.action.VIEW -d "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21" com.theyakka.fluro`
-//var deepLinkHandler = new Handler(
-//    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-//  String colorHex = params["color_hex"]?.first;
-//  String result = params["result"]?.first;
-//  Color color = new Color(0xFFFFFFFF);
-//  if (colorHex != null && colorHex.length > 0) {
-//    color = new Color(ColorHelpers.fromHexString(colorHex));
-//  }
-//  return new DemoSimpleComponent(
-//      message: "DEEEEEP LINK!!!", color: color, result: result);
-//});
+/// 转场动画 页面
+var transitionDemoHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  String title = params["title"]?.first;
+  return TransitionDemoPage(title);
+});

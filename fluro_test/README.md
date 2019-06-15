@@ -1,16 +1,9 @@
 # fluro_test
 
-A new Flutter application.
+fluro 的示例 demo
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+1. 传递参数string ,int，double，bool ，自定义类型
+2. 传递参数,接受返回值
+3. 框架 自带 转场动画 演示
+4. 框架 自定义 转场动画 演示
+5. 修改源码，添加使用 Flutter 的 cupertino 转场动画

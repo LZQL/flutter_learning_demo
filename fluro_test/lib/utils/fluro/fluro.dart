@@ -6,8 +6,8 @@
  * Copyright (c) 2018 Yakka, LLC. All rights reserved.
  * See LICENSE for distribution and usage details.
  */
-import 'package:fluro_test/utils/fluro/fluro.dart';
+library fluro;
 
-class Application {
-  static Router router;
-}
+export 'src/common.dart';
+export 'src/router.dart';
+export 'src/tree.dart';

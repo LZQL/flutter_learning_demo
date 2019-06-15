@@ -1,3 +1,4 @@
+import 'package:fluro_test/config/NavigatorUtil.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:fluro_test/model/Person.dart';
@@ -6,10 +7,11 @@ import 'package:fluro_test/utils/fluro_convert_util.dart';
 class DemoParamsPage extends StatefulWidget {
   final String name;
   final int age;
+  final double score;
   final bool sex;
   final String personJson;
 
-  DemoParamsPage({this.name, this.age,this.sex,this.personJson});
+  DemoParamsPage({this.name, this.age, this.score, this.sex, this.personJson});
 
   @override
   _DemoParamsPageState createState() => _DemoParamsPageState();
@@ -18,40 +20,37 @@ class DemoParamsPage extends StatefulWidget {
 class _DemoParamsPageState extends State<DemoParamsPage> {
   @override
   Widget build(BuildContext context) {
-    var list = List<int>();
+    String mName = FluroConvertUtils.fluroCnParamsDecode(widget.name);
 
-    ///字符串解码
-    jsonDecode(widget.name).forEach(list.add);
-    final String value = Utf8Decoder().convert(list);
-
-    int mAge = widget.age;
-    bool mSex = widget.sex;
-
-
-
-    if(mSex){
-      print("mSex :  true");
-    }else{
-      print("mSex :  false");
-    }
-
-
-//    Person person = Person.fromJson(json.decode(widget.personJson));
-
-    var list2 = List<int>();
-
-    ///字符串解码
-    jsonDecode(widget.personJson).forEach(list2.add);
-    final String value2 = Utf8Decoder().convert(list2);
-    Person person = Person.fromJson(json.decode(value2));
-
+    Person person =
+        Person.fromJson(FluroConvertUtils.string2map(widget.personJson));
     print(person.name);
     print(person.age);
     print(person.sex);
 
+    Map<String, dynamic> data = FluroConvertUtils.string2map(widget.personJson);
+    print(data["name"]);
+    print(data["age"]);
+    print(data["sex"]);
+
     return Scaffold(
       body: Center(
-        child: Text('$value$mAge$mSex'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('name：$mName'),
+            Text('age：${widget.age}'),
+            Text('score：${widget.score}'),
+            Text('sex：${widget.sex}'),
+            Text('Person:${person.toJson().toString()}'),
+            RaisedButton(
+              child: Text('返回'),
+              onPressed: () {
+                NavigatorUtil.goBack(context);
+              },
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,27 +1,4 @@
-//class Person {
-//  String name;
-//  int age;
-//
-//  static Person fromMap(Map<String, dynamic> map) {
-//    Person temp = new Person();
-//    temp.name = map['name'];
-//    temp.age = map['age'];
-//    return temp;
-//  }
-//
-//  static List<Person> fromMapList(dynamic mapList) {
-//    List<Person> list = new List(mapList.length);
-//    for (int i = 0; i < mapList.length; i++) {
-//      list[i] = fromMap(mapList[i]);
-//    }
-//    return list;
-//  }
-//
-//}
-
-
-
-class Person {
+class Person{
   String name;
   int age;
   bool sex;

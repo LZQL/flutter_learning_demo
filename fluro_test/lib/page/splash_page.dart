@@ -1,3 +1,4 @@
+import 'package:fluro_test/config/NavigatorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:fluro_test/config/application.dart';
@@ -13,12 +14,11 @@ class _SplashPagState extends State<SplashPag> {
   @override
   void initState() {
 //    Future.delayed(Duration(seconds: 5),(){
-//      debugPrint('fuck you ');
+//      NavigatorUtil.goHomePage(context);
 //    });
 
     Observable.timer(0, Duration(seconds: 2)).listen((_){
-      debugPrint('fuck you ');
-      Application.router.navigateTo(context, Routes.home,replace: true);
+      NavigatorUtil.goHomePage(context);
     });
     super.initState();
   }

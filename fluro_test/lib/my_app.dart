@@ -7,6 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather App',
+      /// 生成路由
       onGenerateRoute: Application.router.generator,
     );
   }

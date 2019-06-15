@@ -25,11 +25,14 @@ class NavigatorUtil {
   /// 跳转到 传参demo 页面
   static void goDemoParamsPage(BuildContext context, String name, int age,
       double score, bool sex, Person person) {
+    /// 对中文进行编码
+    String mName = FluroConvertUtils.fluroCnParamsEncode(name);
+    /// 对自定义类型 转为 json string
     String personJson = FluroConvertUtils.object2string(person);
     Application.router.navigateTo(
         context,
         Routes.demoParams +
-            "?name=$name&age=$age&score=$score&sex=$sex&personjson=$personJson");
+            "?name=$mName&age=$age&score=$score&sex=$sex&personjson=$personJson");
   }
 
   /// 跳转到 会返回参数的 页面
@@ -42,6 +45,7 @@ class NavigatorUtil {
   static Future gotransitionDemoPage(BuildContext context, String title) {
     return Application.router.navigateTo(
         context, Routes.transitionDemo + "?title=$title",
+        /// 指定了 转场动画
         transition: TransitionType.inFromLeft);
   }
 
@@ -59,9 +63,9 @@ class NavigatorUtil {
     };
     return Application.router.navigateTo(
         context, Routes.transitionCustomDemo + "?title=$title",
-        transition: TransitionType.custom,
-        transitionBuilder: transition,
-        transitionDuration: const Duration(milliseconds: 600));
+        transition: TransitionType.custom, /// 指定是自定义动画
+        transitionBuilder: transition, /// 自定义的动画
+        transitionDuration: const Duration(milliseconds: 600)); /// 时间
   }
 
   /// 使用 IOS 的 Cupertino 的转场动画，这个是修改了源码的 转场动画

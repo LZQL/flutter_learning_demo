@@ -20,6 +20,7 @@ class _TransitionDemoPageState extends State<TransitionDemoPage> {
         children: <Widget>[
           Center(
               child: Text(
+            /// string 解码
             FluroConvertUtils.fluroCnParamsDecode(widget.title),
             textAlign: TextAlign.center,
           )),

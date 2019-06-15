@@ -1,6 +1,5 @@
 import 'package:fluro_test/config/NavigatorUtil.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:fluro_test/model/Person.dart';
 import 'package:fluro_test/utils/fluro_convert_util.dart';
 
@@ -20,14 +19,15 @@ class DemoParamsPage extends StatefulWidget {
 class _DemoParamsPageState extends State<DemoParamsPage> {
   @override
   Widget build(BuildContext context) {
+    /// 对 中文 进行解码
     String mName = FluroConvertUtils.fluroCnParamsDecode(widget.name);
-
+    /// 对自定义类 进行解析
     Person person =
         Person.fromJson(FluroConvertUtils.string2map(widget.personJson));
     print(person.name);
     print(person.age);
     print(person.sex);
-
+    /// 下面的写法也可以
     Map<String, dynamic> data = FluroConvertUtils.string2map(widget.personJson);
     print(data["name"]);
     print(data["age"]);

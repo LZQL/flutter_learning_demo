@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    String name = FluroConvertUtils.fluroCnParamsEncode("来自第一个界面测试一下");
+    String name = "来自第一个界面测试一下";
     int age = 14;
     double score = 6.4;
     bool sex = true;
@@ -34,11 +34,16 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               NavigatorUtil.goReturnParamsPage(context).then((result) {
                 debugPrint('${result.runtimeType}');
+                String message  ;
+                /// 如果是 自定义的 Person 类
                 if (result.runtimeType == Person) {
+                  message = result.toJson().toString();
                   debugPrint('${result.toJson().toString()}');
                 } else {
+                  message = '$result';
                   debugPrint('$result');
                 }
+                showResultDialog(context, message);
               });
             },
           ),
@@ -46,14 +51,17 @@ class _HomePageState extends State<HomePage> {
             child: Text('框架 自带 转场动画 演示'),
             onPressed: () {
               NavigatorUtil.gotransitionDemoPage(context,
-                  FluroConvertUtils.fluroCnParamsEncode("框架 自带 转场动画 演示"));
+                  /// 这边进行了 String 编码
+                  FluroConvertUtils.fluroCnParamsEncode("框架 自带 转场动画 演示 \n\n\n   "
+                      "这边只展示 inFromLeft ，剩下的自己去尝试下,\n\n\n   "
+                      "架自带的有 native，nativeModal，inFromLeft，inFromRight，inFromBottom，fadeIn，custom"));
             },
           ),
           RaisedButton(
             child: Text('框架 自定义 转场动画 演示'),
             onPressed: () {
               NavigatorUtil.gotransitionCustomDemoPage(context,
-                  FluroConvertUtils.fluroCnParamsEncode('框架 自定义 转场动画 演示 \n\n\n   这边只展示 inFromLeft ，剩下的自己去尝试下,\n\n\n   框架自带的有 native，nativeModal，inFromLeft，inFromRight，inFromBottom，fadeIn，custom'));
+                  FluroConvertUtils.fluroCnParamsEncode('框架 自定义 转场动画 演示'));
             },
           ),
           RaisedButton(
@@ -69,4 +77,37 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  /// 显示一个Dialgo
+  void showResultDialog(BuildContext context,String message){
+    showDialog(
+      context: context,
+      builder: (context) {
+        return new AlertDialog(
+          title: new Text(
+            "Hey Hey!",
+            style: new TextStyle(
+              color: const Color(0xFF00D6F7),
+              fontFamily: "Lazer84",
+              fontSize: 22.0,
+            ),
+          ),
+          content: new Text("$message"),
+          actions: <Widget>[
+            new Padding(
+              padding: new EdgeInsets.only(bottom: 8.0, right: 8.0),
+              child: new FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+                child: new Text("OK"),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
+

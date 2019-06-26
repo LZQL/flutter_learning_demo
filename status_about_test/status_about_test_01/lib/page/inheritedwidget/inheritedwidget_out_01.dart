@@ -1,39 +1,27 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Scaffold(
-          appBar: AppBar(title: Text('inheritedwidget03'),),
-          body: InheritedWidgetTest03()),
-    );
-    
-  }
-}
-
-class InheritedWidgetTest03 extends StatefulWidget {
+/// 上移`Child`对象到`InheriteWidget`的`Parent Widget`
+/// Widget A ，FlatButton rebuild, Widget B  no rebuild
+class InheritedWidgetOut01 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InheritedWidgetTest03State();
+    return InheritedWidgetOut01State();
   }
 }
 
-class InheritedWidgetTest03State extends State<InheritedWidgetTest03> {
+class InheritedWidgetOut01State extends State<InheritedWidgetOut01> {
   @override
   Widget build(BuildContext context) {
 
-    return MyWidget(
-        Column(
-
-          children: <Widget>[
-            WidgetA(),
-            WidgetB()
-          ],
-        )
+    return Scaffold(
+      body: MyWidget(
+          Column(
+            children: <Widget>[
+              WidgetA(),
+              WidgetB()
+            ],
+          )
+      ),
     );
   }
 }

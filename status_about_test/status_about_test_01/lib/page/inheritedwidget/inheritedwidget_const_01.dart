@@ -1,40 +1,31 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Scaffold(
-          appBar: AppBar(title: Text('inheritedwidget01'),),
-          body: InheritedWidgetTest01()),
-    );
-    
-  }
-}
-
-class InheritedWidgetTest01 extends StatefulWidget {
+/// 使用 const
+/// Widget A ，FlatButton rebuild, Widget B  no rebuild
+class InheritedWidgetConst01 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InheritedWidgetTest01State();
+    return InheritedWidgetConst01State();
   }
 }
 
-class InheritedWidgetTest01State extends State<InheritedWidgetTest01> {
+class InheritedWidgetConst01State extends State<InheritedWidgetConst01> {
   int tmpData = 0;
+
+
+
   @override
   Widget build(BuildContext context) {
-    print('InheritedWidgetTest01 build');
-    return Center(
-      child: ShareInherited(
-        data: tmpData,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    print('InheritedWidgetTest02 build');
+    return Scaffold(
+      body: Center(
+        child: ShareInherited(
+          data: tmpData,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              WidgetA(),
-              WidgetB(),
+              const WidgetA(),
+              const WidgetB(),
               FlatButton(
                 child: Text("Click me"),
                 onPressed: () {
@@ -46,7 +37,7 @@ class InheritedWidgetTest01State extends State<InheritedWidgetTest01> {
               ),
             ],
           ),
-
+        ),
       ),
     );
   }
@@ -55,7 +46,7 @@ class InheritedWidgetTest01State extends State<InheritedWidgetTest01> {
 class ShareInherited extends InheritedWidget {
   final int data;
 
-  ShareInherited({this.data, Widget child}) : super(child : child) {
+  ShareInherited({this.data, @required Widget child}) : super(child: child) {
     print('ShareInherited construct');
   }
 
@@ -72,6 +63,9 @@ class ShareInherited extends InheritedWidget {
 }
 
 class WidgetA extends StatelessWidget {
+
+  const WidgetA();
+
   @override
   Widget build(BuildContext context) {
     print('WidgetA build');
@@ -81,10 +75,12 @@ class WidgetA extends StatelessWidget {
 }
 
 class WidgetB extends StatelessWidget {
+
+  const WidgetB();
+
   @override
   Widget build(BuildContext context) {
     print('WidgetB build');
     return Text('WidgetB');
   }
 }
-

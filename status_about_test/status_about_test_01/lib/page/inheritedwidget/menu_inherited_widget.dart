@@ -13,16 +13,16 @@ import 'package:status_about_test_01/page/inheritedwidget/ancestor02.dart';
 
 
 final List<MenuItemModel> _itemList = [
-  MenuItemModel(name: "AncestorWidgetOfExactType01演示", page: MyAncestorTree01()),
-  MenuItemModel(name: "AncestorWidgetOfExactType02演示", page: MyAncestorTree02()),
+  MenuItemModel(name: "1 - AncestorWidgetOfExactType01演示", page: MyAncestorTree01()),
+  MenuItemModel(name: "1 - AncestorWidgetOfExactType02演示", page: MyAncestorTree02()),
 //  MenuItemModel(name: "AncestorWidgetOfExactType演示", page: TopPage()),
-  MenuItemModel(name: "InheritedWidget演示01", page: InheritedWidgetTest01()),
-  MenuItemModel(name: "InheritedWidget const 01 演示", page: InheritedWidgetConst01()),
-  MenuItemModel(name: "InheritedWidget const 02 演示", page: InheritedWidgetConst02()),
-  MenuItemModel(name: "InheritedWidget const 03 演示", page: InheritedWidgetConst03()),
-  MenuItemModel(name: "InheritedWidget out 01 演示", page: InheritedWidgetOut01()),
-  MenuItemModel(name: "InheritedWidget out 02 演示", page: InheritedWidgetOut02()),
-  MenuItemModel(name: "InheritedWidget out 03 演示", page: InheritedWidgetOut03()),
+  MenuItemModel(name: "2 - InheritedWidget演示01", page: InheritedWidgetTest01()),
+  MenuItemModel(name: "2 - InheritedWidget const 01 演示", page: InheritedWidgetConst01()),
+  MenuItemModel(name: "2 - InheritedWidget const 02 演示", page: InheritedWidgetConst02()),
+  MenuItemModel(name: "2 - InheritedWidget const 03 演示", page: InheritedWidgetConst03()),
+  MenuItemModel(name: "3 - InheritedWidget out 01 演示", page: InheritedWidgetOut01()),
+  MenuItemModel(name: "3 - InheritedWidget out 02 演示", page: InheritedWidgetOut02()),
+  MenuItemModel(name: "3 - InheritedWidget out 03 演示", page: InheritedWidgetOut03()),
 ];
 
 

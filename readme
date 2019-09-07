@@ -1,1 +1,10 @@
-Flutter demo list
+数据共享，通信，状态管理 相关demo
+
+
+# status_about_test_01
+
+        InheritedWidget Demo
+
+# status_about_test_02
+
+        ValueNotifier Demo

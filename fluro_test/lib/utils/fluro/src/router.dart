@@ -11,11 +11,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:fluro_test/utils/fluro/fluro.dart';
-import 'package:fluro_test/utils/fluro/src/common.dart';
 
-class Router {
-  static final appRouter = new Router();
+import 'common.dart';
+import 'tree.dart';
+
+
+class FluroRouter {
+  static final appRouter = new FluroRouter();
 
   /// The tree structure that stores the defined routes
   final RouteTree _routeTree = new RouteTree();
@@ -36,7 +38,7 @@ class Router {
     return _routeTree.matchRoute(path);
   }
 
-  bool pop(BuildContext context) => Navigator.pop(context);
+  void pop(BuildContext context) => Navigator.pop(context);
 
   ///
   Future navigateTo(BuildContext context, String path,

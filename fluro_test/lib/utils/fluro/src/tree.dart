@@ -7,8 +7,9 @@
  * See LICENSE for distribution and usage details.
  */
 
-import 'package:fluro_test/utils/fluro/src/common.dart';
 import 'package:flutter/widgets.dart';
+
+import 'common.dart';
 
 enum RouteTreeNodeType {
   component,

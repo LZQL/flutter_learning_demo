@@ -9,5 +9,5 @@
 import 'package:fluro_test/utils/fluro/fluro.dart';
 
 class Application {
-  static Router router;
+  static FluroRouter router;
 }
